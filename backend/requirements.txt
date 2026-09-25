@@ -1,0 +1,18 @@
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+sqlalchemy[asyncio]==2.0.30
+asyncpg==0.29.0
+pydantic==2.7.1
+pydantic-settings==2.2.1
+python-dotenv==1.0.1
+httpx==0.27.0
+groq==0.9.0
+google-generativeai==0.6.0
+pinecone-client==4.1.0
+sentence-transformers==2.7.0
+transformers==4.41.0
+# CPU-only torch — ~800MB instead of ~2.5GB (no GPU needed on Render)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.3.0+cpu
+alembic==1.13.1
+psycopg2-binary==2.9.9

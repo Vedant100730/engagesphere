@@ -1,0 +1,103 @@
+{
+  "business_name": "The Daily Grind",
+  "tagline": "Specialty coffee, good people, great mornings.",
+  "about": "The Daily Grind is an independent specialty coffee shop in the heart of the city. We source single-origin beans from ethical farms across Ethiopia, Colombia, and Guatemala, rotating our espresso blend seasonally. Our baristas are trained to CompCoffee Level 2 standard and genuinely love what they do. We have been open since 2019 and are proud to be a neighbourhood staple for remote workers, students, and anyone who takes their coffee seriously.",
+
+  "hours": [
+    { "day": "Monday – Friday", "hours": "7:00 AM – 7:00 PM" },
+    { "day": "Saturday",        "hours": "8:00 AM – 6:00 PM" },
+    { "day": "Sunday",          "hours": "9:00 AM – 5:00 PM" },
+    { "day": "Public Holidays", "hours": "10:00 AM – 4:00 PM (check our Instagram for exceptions)" }
+  ],
+
+  "menu": [
+    {
+      "section": "Hot Drinks",
+      "items": [
+        { "name": "Espresso",        "price": "£2.50" },
+        { "name": "Americano",       "price": "£3.00" },
+        { "name": "Flat White",      "price": "£3.50", "description": "18g double ristretto, silky microfoam" },
+        { "name": "Cappuccino",      "price": "£3.50" },
+        { "name": "Latte",           "price": "£3.80" },
+        { "name": "Cortado",         "price": "£3.20", "description": "Equal parts espresso and steamed milk" },
+        { "name": "Pour Over",       "price": "£4.50", "description": "Single-origin filter, brewed to order — ask your barista about today's origin" },
+        { "name": "Matcha Latte",    "price": "£4.00", "description": "Ceremonial grade matcha, available with any milk" },
+        { "name": "Chai Latte",      "price": "£3.80", "description": "House-made spiced chai concentrate" },
+        { "name": "Hot Chocolate",   "price": "£3.80", "description": "Valrhona 70% dark chocolate" }
+      ]
+    },
+    {
+      "section": "Cold Drinks",
+      "items": [
+        { "name": "Cold Brew",              "price": "£4.00", "description": "12-hour steep, smooth and low-acid" },
+        { "name": "Lavender Cold Brew",     "price": "£4.50", "description": "Cold brew with house lavender syrup" },
+        { "name": "Vanilla Espresso Tonic", "price": "£4.50", "description": "Double shot over tonic water with vanilla" },
+        { "name": "Iced Latte",             "price": "£4.00" },
+        { "name": "Iced Matcha Latte",      "price": "£4.20" }
+      ]
+    },
+    {
+      "section": "Seasonal Specials",
+      "items": [
+        { "name": "Pumpkin Spice Latte", "price": "£4.50", "description": "Available September – November, made with real pumpkin purée and house spice blend" }
+      ]
+    },
+    {
+      "section": "Milk Options",
+      "items": [
+        { "name": "Whole milk",       "description": "Default for all espresso drinks" },
+        { "name": "Oat milk",         "description": "Available, no extra charge — we use Oatly Barista" },
+        { "name": "Soy milk",         "description": "Available, no extra charge" },
+        { "name": "Almond milk",      "description": "Available, no extra charge" },
+        { "name": "Coconut milk",     "description": "Available, £0.30 supplement" }
+      ]
+    },
+    {
+      "section": "Food",
+      "items": [
+        { "name": "Almond Croissant",        "price": "£3.50", "description": "Contains: gluten, nuts (almonds), eggs, dairy. Made in a bakery that also handles sesame." },
+        { "name": "Pain au Chocolat",        "price": "£3.00", "description": "Contains: gluten, dairy, eggs. Vegan option not available." },
+        { "name": "Banana Bread (GF)",       "price": "£3.50", "description": "Gluten-free, dairy-free, contains eggs and walnuts." },
+        { "name": "Avocado Toast",           "price": "£6.50", "description": "Sourdough, smashed avocado, chilli flakes, lemon. Contains gluten. Vegan." },
+        { "name": "Overnight Oats",          "price": "£5.00", "description": "Oat milk base, seasonal fruit, granola. Vegan, gluten-free." },
+        { "name": "Vegan Blueberry Muffin",  "price": "£3.00", "description": "Vegan, contains gluten." }
+      ]
+    }
+  ],
+
+  "policies": [
+    "We offer oat milk, soy milk, and almond milk at no extra charge. Coconut milk is available for a £0.30 supplement.",
+    "Allergen information is available for all menu items — please ask any member of staff or check the allergen binder kept at the counter. We take allergies seriously and will always be honest if we are unsure.",
+    "We welcome remote workers and encourage you to stay as long as you need. We ask that you purchase at least one item per two hours during our busiest times (8–10 AM and 12–2 PM on weekdays).",
+    "We have fast, free Wi-Fi. Ask at the counter for the current password.",
+    "We have a loyalty stamp card — every 9 drinks earns you a free drink of your choice.",
+    "Reusable cup discount: bring your own cup and receive £0.20 off any drink. We accept any clean, food-safe reusable cup.",
+    "We do not offer table reservations — we are a walk-in café.",
+    "Dogs are welcome in the outdoor seating area. Guide and assistance dogs are welcome everywhere.",
+    "Decaf espresso is available for all espresso-based drinks (Americano, latte, cappuccino, flat white, cortado) at no extra charge. Ask your barista.",
+    "We have one accessible entrance via the side alley on Crane Street (no step, automatic door). The main front entrance has a 4cm step.",
+    "Sugar-free syrups available: vanilla (sugar-free), hazelnut (sugar-free), caramel (sugar-free). Ask at the counter.",
+    "We participate in the city's 'Cup Up' return scheme — if you forget your reusable cup you can borrow one of ours and return it on your next visit."
+  ],
+
+  "contact": {
+    "address": "14 Crane Street, City Centre, EC1 2AB",
+    "phone": "+44 20 7946 0123",
+    "email": "hello@thedailygrind.coffee",
+    "website": "https://www.thedailygrind.coffee",
+    "instagram": "@thedailygrindcoffee",
+    "facebook": "facebook.com/thedailygrindcoffee"
+  },
+
+  "extra": [
+    "We are open on most public holidays from 10 AM to 4 PM. We always post any exceptions on our Instagram story the week before.",
+    "Our espresso blend changes each season. The current blend is a washed Ethiopian Yirgacheffe combined with a Colombian natural — expect notes of blueberry, jasmine, and brown sugar.",
+    "We have two communal tables (6 seats each), four two-person window seats, and four solo counter seats. Total capacity is approximately 24 guests.",
+    "There are four power outlets at the counter bar and two on the east communal table — ideal for laptop users.",
+    "Background music is kept at a low conversational volume during business hours. We do not play music above 60dB.",
+    "Cold brew is brewed in-house in 20-litre batches. When it runs out for the day it is gone — we do not water it down or substitute with iced coffee.",
+    "All our takeaway cups are compostable (PFAS-free). We are working towards eliminating single-use plastic by end of year.",
+    "We are a cashless café — we accept all major credit and debit cards and contactless payment including Apple Pay and Google Pay.",
+    "Gift cards are available in-store in denominations of £10, £20, and £50."
+  ]
+}

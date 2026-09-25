@@ -1,0 +1,107 @@
+[
+  {
+    "external_id": "gm_001",
+    "author_name": "Sarah Mitchell",
+    "content_text": "Absolutely love this place! The coffee is the best I've had in the city and the staff are always so warm and welcoming. Been coming here every morning for six months and they still remember my order. Five stars easily.",
+    "rating": 5,
+    "timestamp": "2026-08-28T08:15:00Z"
+  },
+  {
+    "external_id": "gm_002",
+    "author_name": "James Okafor",
+    "content_text": "Waited 25 minutes for a cappuccino on a Tuesday morning with only three other people in the shop. When it finally arrived it was lukewarm. The barista didn't apologise or acknowledge the wait. Really disappointed — I've recommended this place to friends and I feel embarrassed now.",
+    "rating": 2,
+    "timestamp": "2026-08-29T09:42:00Z"
+  },
+  {
+    "external_id": "gm_003",
+    "author_name": "Priya Nair",
+    "content_text": "Great atmosphere for working. Fast Wi-Fi, plenty of power outlets, and the background music is at a perfect volume — not too loud. The oat milk latte is excellent. Only small gripe: the communal tables are a bit close together.",
+    "rating": 4,
+    "timestamp": "2026-08-30T11:00:00Z"
+  },
+  {
+    "external_id": "gm_004",
+    "author_name": "Carlos Ruiz",
+    "content_text": "Do you have any vegan pastry options? I noticed the display case only has dairy-based items. Would love to see some plant-based choices added to the menu.",
+    "rating": null,
+    "timestamp": "2026-08-30T13:22:00Z"
+  },
+  {
+    "external_id": "gm_005",
+    "author_name": "Emily Thornton",
+    "content_text": "The seasonal pumpkin spice latte is back and it is even better than last year. Rich, not overly sweet, and the foam art is gorgeous. This is genuinely my happy place.",
+    "rating": 5,
+    "timestamp": "2026-08-31T07:55:00Z"
+  },
+  {
+    "external_id": "gm_006",
+    "author_name": "David Kwon",
+    "content_text": "I ordered a flat white and received what tasted like a regular latte. When I pointed it out the staff member seemed confused about the difference. Coffee basics should be trained properly. The place has potential but the inconsistency is frustrating.",
+    "rating": 3,
+    "timestamp": "2026-08-31T15:10:00Z"
+  },
+  {
+    "external_id": "gm_007",
+    "author_name": "Aisha Patel",
+    "content_text": "One of the few spots in town that genuinely nails pour-over coffee. The single-origin Ethiopian blend they have right now is floral and complex. Staff are clearly passionate about what they serve. Highly recommend.",
+    "rating": 5,
+    "timestamp": "2026-09-01T10:30:00Z"
+  },
+  {
+    "external_id": "gm_008",
+    "author_name": "Tom Brennan",
+    "content_text": "Visited on Saturday afternoon and it was packed with no queue management whatsoever. People were cutting in at the counter and the staff didn't seem to notice. Took 35 minutes total. The drink was fine but the experience was chaotic.",
+    "rating": 2,
+    "timestamp": "2026-09-01T16:05:00Z"
+  },
+  {
+    "external_id": "gm_009",
+    "author_name": "Mei Lin",
+    "content_text": "Perfectly decent coffee and a cosy interior. Nothing mind-blowing but consistently good, which is honestly what I need before work. Prices are fair for the area.",
+    "rating": 4,
+    "timestamp": "2026-09-02T08:00:00Z"
+  },
+  {
+    "external_id": "gm_010",
+    "author_name": "Roberto Ferretti",
+    "content_text": "Asked if the almond croissant contained nuts due to an allergy and the staff member wasn't sure and couldn't find the allergen info. Had to leave without buying anything. For a food business this is a serious gap — allergen information must be readily available.",
+    "rating": 1,
+    "timestamp": "2026-09-02T12:45:00Z"
+  },
+  {
+    "external_id": "gm_011",
+    "author_name": "Hannah Brooks",
+    "content_text": "The new cold brew menu is fantastic. Tried the lavender cold brew and the vanilla tonic — both are creative and refreshing. Great addition for summer. Will definitely be back.",
+    "rating": 5,
+    "timestamp": "2026-09-03T14:20:00Z"
+  },
+  {
+    "external_id": "gm_012",
+    "author_name": "Marcus Webb",
+    "content_text": "Toilet was out of order and nobody had put a sign up. Found out after waiting in a short queue. Not a dealbreaker but a bit of a letdown when you're in a rush.",
+    "rating": 3,
+    "timestamp": "2026-09-03T11:10:00Z"
+  },
+  {
+    "external_id": "gm_013",
+    "author_name": "Fatima Al-Hassan",
+    "content_text": "Do you offer any decaf espresso-based drinks? I'd love to know if the decaf option extends to lattes and cappuccinos or just Americanos.",
+    "rating": null,
+    "timestamp": "2026-09-04T09:15:00Z"
+  },
+  {
+    "external_id": "gm_014",
+    "author_name": "Oliver Svensson",
+    "content_text": "First visit and I was blown away. The barista took time to explain the difference between their two espresso blends and helped me choose. That kind of knowledgeable, unhurried service is rare. The cortado was superb.",
+    "rating": 5,
+    "timestamp": "2026-09-04T11:40:00Z"
+  },
+  {
+    "external_id": "gm_015",
+    "author_name": "Nkechi Adeyemi",
+    "content_text": "Charged me for a large when I ordered a regular. Caught it when I checked my receipt outside. Went back in and they fixed it quickly and apologised, which I appreciate — but double-checking orders at the till would avoid the hassle entirely.",
+    "rating": 3,
+    "timestamp": "2026-09-05T08:30:00Z"
+  }
+]

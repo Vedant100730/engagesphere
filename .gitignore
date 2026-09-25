@@ -1,0 +1,32 @@
+# Environment files — never commit secrets
+.env
+backend/.env
+frontend/.env
+frontend/.env.local
+frontend/.env.production
+
+# Allow example files (no real secrets)
+!backend/.env.example
+!frontend/.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+
+# Node
+node_modules/
+frontend/.next/
+frontend/out/
+
+# IDE
+.vscode/
+.idea/
+*.DS_Store

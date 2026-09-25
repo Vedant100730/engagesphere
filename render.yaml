@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: engagesphere-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false          # Set manually in Render dashboard
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: PINECONE_API_KEY
+        sync: false
+      - key: PINECONE_INDEX_NAME
+        value: engagesphere
+      - key: PINECONE_ENVIRONMENT
+        value: us-east-1
+      - key: META_APP_ID
+        sync: false
+      - key: META_APP_SECRET
+        sync: false
+      - key: FACEBOOK_PAGE_ACCESS_TOKEN
+        sync: false
+      - key: INSTAGRAM_ACCESS_TOKEN
+        sync: false
+      - key: FRONTEND_URL
+        sync: false          # e.g. https://engagesphere.vercel.app
+      - key: BACKEND_URL
+        sync: false          # e.g. https://engagesphere-backend.onrender.com
