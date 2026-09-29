@@ -174,19 +174,36 @@ async def login(
 
     user_id = str(sign_in.user.id)
 
-    # Get business info
+    # Get business info — create a recovery row if missing (handles orphaned accounts
+    # where Supabase auth user exists but the businesses row was never committed)
     row = await db.execute(
         text("SELECT id, name FROM businesses WHERE user_id = :uid LIMIT 1"),
         {"uid": user_id},
     )
     business = row.fetchone()
     if not business:
-        raise HTTPException(status_code=404, detail="No business found. Please sign up again.")
-
-    business_id = str(business.id)
+        # Recover: create a business row so the user isn't permanently locked out
+        business_id = str(uuid.uuid4())
+        email_name = sign_in.user.email.split("@")[0].replace(".", " ").title()
+        await db.execute(
+            text(
+                "INSERT INTO businesses (id, name, email, user_id, created_at) "
+                "VALUES (:id, :name, :email, :user_id, NOW())"
+            ),
+            {
+                "id": business_id,
+                "name": f"{email_name}'s Business",
+                "email": sign_in.user.email,
+                "user_id": user_id,
+            },
+        )
+        await db.commit()
+        business_name = f"{email_name}'s Business"
+    else:
+        business_id = str(business.id)
+        business_name = business.name
 
     # Auto-seed tokens from .env into platform_connections if present
-    # This lets the owner use their .env tokens without going through onboarding
     await _auto_seed_env_tokens(db, business_id)
 
     return {
@@ -195,7 +212,7 @@ async def login(
         "user": {
             "id": user_id,
             "email": sign_in.user.email,
-            "business_name": business.name,
+            "business_name": business_name,
             "business_id": business_id,
         },
     }
