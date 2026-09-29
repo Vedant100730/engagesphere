@@ -68,3 +68,45 @@ async def health_check():
         "service": "EngageSphere API v2",
         "warnings": [f"Missing env var: {v}" for v in missing] if missing else [],
     }
+
+
+@app.get("/debug/db")
+async def debug_db():
+    """
+    Temporary endpoint — tests DB connection and Supabase client init.
+    Remove after confirming login works in production.
+    """
+    import traceback
+    results = {}
+
+    # 1. Test raw DB connection
+    try:
+        from sqlalchemy import text
+        from backend.database.db import engine
+        async with engine.connect() as conn:
+            row = await conn.execute(text("SELECT 1 AS ok"))
+            results["db_connection"] = "ok" if row.fetchone() else "no row returned"
+    except Exception as exc:
+        results["db_connection"] = f"FAILED: {exc}"
+        results["db_traceback"] = traceback.format_exc()
+
+    # 2. Test businesses table exists
+    try:
+        from sqlalchemy import text
+        from backend.database.db import engine
+        async with engine.connect() as conn:
+            row = await conn.execute(text("SELECT COUNT(*) FROM businesses"))
+            results["businesses_table"] = f"ok — {row.scalar()} rows"
+    except Exception as exc:
+        results["businesses_table"] = f"FAILED: {exc}"
+
+    # 3. Test Supabase client init
+    try:
+        from supabase import create_client
+        sb = create_client(settings.SUPABASE_URL, settings.SUPABASE_SERVICE_ROLE_KEY)
+        results["supabase_client"] = "ok"
+        results["supabase_url"] = settings.SUPABASE_URL[:40] + "..."
+    except Exception as exc:
+        results["supabase_client"] = f"FAILED: {exc}"
+
+    return results
