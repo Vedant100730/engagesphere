@@ -9,10 +9,13 @@ app = FastAPI(
     version="2.0.0",
 )
 
-# Allow both localhost (dev) and the deployed frontend URL (prod)
+# Allow localhost (dev) + deployed Vercel frontend (prod).
+# The explicit Vercel URL is hardcoded as a safety net in case FRONTEND_URL
+# env var is not yet set on Render.
 _allowed_origins = list({
     "http://localhost:3000",
-    settings.FRONTEND_URL,
+    "https://engagesphere-dun.vercel.app",
+    settings.FRONTEND_URL,   # picks up any custom domain set later
 })
 
 app.add_middleware(
@@ -35,4 +38,14 @@ app.include_router(suggestions.router, prefix="/api/suggestions", tags=["suggest
 
 @app.get("/health")
 async def health_check():
-    return {"status": "ok", "service": "EngageSphere API v2"}
+    """Health check — also surfaces missing critical env vars."""
+    missing = [
+        var for var in ("SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY", "DATABASE_URL")
+        if not getattr(settings, var, "")
+        or getattr(settings, var) == "postgresql+asyncpg://user:password@localhost:5432/engagesphere"
+    ]
+    return {
+        "status": "ok",
+        "service": "EngageSphere API v2",
+        "warnings": [f"Missing env var: {v}" for v in missing] if missing else [],
+    }
