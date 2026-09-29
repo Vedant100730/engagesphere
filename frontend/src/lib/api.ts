@@ -3,7 +3,7 @@ import type {
   IngestResult, ListResponse, Reply, SentimentStats, Suggestion,
 } from "./types";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const BASE_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
 
 // Get token from localStorage
 function getToken(): string {
