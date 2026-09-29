@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { apiSignup } from "@/lib/api";
 import { useAuth } from "@/lib/auth-context";
+
+const BASE_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
 
 export default function SignupPage() {
   const router = useRouter();
@@ -13,6 +15,11 @@ export default function SignupPage() {
   const [password, setPassword] = useState("");
   const [businessName, setBusinessName] = useState("");
   const [error, setError] = useState("");
+
+  // Wake up Render on page load
+  useEffect(() => {
+    fetch(`${BASE_URL}/health`).catch(() => {});
+  }, []);
   const [loading, setLoading] = useState(false);
 
   const handleSignup = async (e: React.FormEvent) => {

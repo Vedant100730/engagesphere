@@ -18,14 +18,31 @@ function getToken(): string {
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const token = getToken();
-  const res = await fetch(`${BASE_URL}${path}`, {
-    headers: {
-      "Content-Type": "application/json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      ...init?.headers,
-    },
-    ...init,
-  });
+
+  // Render free tier spins down after inactivity — first request can take 30s+.
+  // Retry once with a longer timeout so "Failed to fetch" doesn't surface to the user.
+  const attemptFetch = () =>
+    fetch(`${BASE_URL}${path}`, {
+      headers: {
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        ...init?.headers,
+      },
+      ...init,
+    });
+
+  let res: Response;
+  try {
+    res = await attemptFetch();
+  } catch {
+    // First attempt failed (likely Render cold start) — wait 3s and retry once
+    await new Promise((r) => setTimeout(r, 3000));
+    try {
+      res = await attemptFetch();
+    } catch (err) {
+      throw new Error("Server is waking up — please try again in a moment.");
+    }
+  }
   if (res.status === 401) {
     localStorage.removeItem("engagesphere_user");
     window.location.href = "/login";

@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { apiLogin } from "@/lib/api";
 import { useAuth } from "@/lib/auth-context";
+
+const BASE_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
 
 export default function LoginPage() {
   const router = useRouter();
@@ -13,6 +15,12 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // Ping the backend as soon as the login page loads so Render wakes up
+  // before the user clicks Sign In — avoids the cold-start "Failed to fetch"
+  useEffect(() => {
+    fetch(`${BASE_URL}/health`).catch(() => {});
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
