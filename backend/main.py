@@ -10,18 +10,22 @@ app = FastAPI(
     version="2.0.0",
 )
 
-# Allow localhost (dev) + deployed Vercel frontend (prod).
-# The explicit Vercel URL is hardcoded as a safety net in case FRONTEND_URL
-# env var is not yet set on Render.
+# Allow localhost (dev) + all Vercel preview/prod deployments + any custom domain.
+# Using allow_origin_regex to cover all *.vercel.app subdomains so new Vercel
+# preview deployments don't break CORS.
+_allowed_origin_regex = r"https://.*\.vercel\.app"
+
 _allowed_origins = list({
     "http://localhost:3000",
     "https://engagesphere-dun.vercel.app",
-    settings.FRONTEND_URL,   # picks up any custom domain set later
+    "https://engagesphere-1a45corga-vedant21.vercel.app",
+    settings.FRONTEND_URL,
 })
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_allowed_origins,
+    allow_origin_regex=_allowed_origin_regex,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
