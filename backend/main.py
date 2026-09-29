@@ -1,5 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from backend.config import settings
 from backend.routers import auth, business, classify, feedback, ingest, oauth, replies, suggestions
 
@@ -25,6 +26,24 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception) -> JSONResponse:
+    """
+    Catch-all handler so unhandled exceptions return a JSON 500 that passes
+    through CORS middleware instead of a raw Starlette error response that
+    strips the Access-Control-Allow-Origin header.
+    """
+    import logging, traceback
+    logging.getLogger("engagesphere").error(
+        "Unhandled exception on %s %s: %s\n%s",
+        request.method, request.url.path, exc, traceback.format_exc(),
+    )
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "Internal server error"},
+    )
 
 app.include_router(auth.router,        prefix="/api/auth",        tags=["auth"])
 app.include_router(oauth.router,       prefix="/api/oauth",       tags=["oauth"])

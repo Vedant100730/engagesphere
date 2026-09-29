@@ -176,35 +176,40 @@ async def login(
 
     # Get business info — create a recovery row if missing (handles orphaned accounts
     # where Supabase auth user exists but the businesses row was never committed)
-    row = await db.execute(
-        text("SELECT id, name FROM businesses WHERE user_id = :uid LIMIT 1"),
-        {"uid": user_id},
-    )
-    business = row.fetchone()
-    if not business:
-        # Recover: create a business row so the user isn't permanently locked out
-        business_id = str(uuid.uuid4())
-        email_name = sign_in.user.email.split("@")[0].replace(".", " ").title()
-        await db.execute(
-            text(
-                "INSERT INTO businesses (id, name, email, user_id, created_at) "
-                "VALUES (:id, :name, :email, :user_id, NOW())"
-            ),
-            {
-                "id": business_id,
-                "name": f"{email_name}'s Business",
-                "email": sign_in.user.email,
-                "user_id": user_id,
-            },
+    try:
+        row = await db.execute(
+            text("SELECT id, name FROM businesses WHERE user_id = :uid LIMIT 1"),
+            {"uid": user_id},
         )
-        await db.commit()
-        business_name = f"{email_name}'s Business"
-    else:
-        business_id = str(business.id)
-        business_name = business.name
+        business = row.fetchone()
+        if not business:
+            # Recover: create a business row so the user isn't permanently locked out
+            business_id = str(uuid.uuid4())
+            email_name = sign_in.user.email.split("@")[0].replace(".", " ").title()
+            await db.execute(
+                text(
+                    "INSERT INTO businesses (id, name, email, user_id, created_at) "
+                    "VALUES (:id, :name, :email, :user_id, NOW())"
+                ),
+                {
+                    "id": business_id,
+                    "name": f"{email_name}'s Business",
+                    "email": sign_in.user.email,
+                    "user_id": user_id,
+                },
+            )
+            await db.commit()
+            business_name = f"{email_name}'s Business"
+        else:
+            business_id = str(business.id)
+            business_name = business.name
 
-    # Auto-seed tokens from .env into platform_connections if present
-    await _auto_seed_env_tokens(db, business_id)
+        # Auto-seed tokens from .env into platform_connections if present
+        await _auto_seed_env_tokens(db, business_id)
+    except Exception as exc:
+        import logging
+        logging.getLogger("engagesphere").error("Login DB error for user %s: %s", user_id, exc)
+        raise HTTPException(status_code=500, detail="Login failed due to a server error. Please try again.")
 
     return {
         "access_token": sign_in.session.access_token,
