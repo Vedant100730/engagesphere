@@ -51,6 +51,9 @@ async def global_exception_handler(request: Request, exc: Exception) -> JSONResp
 
 app.include_router(auth.router,        prefix="/api/auth",        tags=["auth"])
 app.include_router(oauth.router,       prefix="/api/oauth",       tags=["oauth"])
+# Also mount oauth callbacks at /api/auth/{platform}/callback to match the
+# redirect URI registered in the Meta App dashboard
+app.include_router(oauth.router,       prefix="/api/auth",        tags=["oauth-compat"])
 app.include_router(ingest.router,      prefix="/api/ingest",      tags=["ingest"])
 app.include_router(classify.router,    prefix="/api/classify",    tags=["classify"])
 app.include_router(business.router,    prefix="/api/business",    tags=["business"])

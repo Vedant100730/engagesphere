@@ -38,9 +38,10 @@ GRAPH_API_BASE = "https://graph.facebook.com/v19.0"
 
 # Callback URLs are derived from BACKEND_URL env var so they work both locally
 # and on Render without code changes. Must match Meta App → Valid OAuth Redirect URIs.
+# Registered in Meta as: https://engagesphere-backend-sasv.onrender.com/api/auth/facebook/callback
 def _callback(platform: str) -> str:
     base = settings.BACKEND_URL.rstrip("/")
-    return f"{base}/api/oauth/{platform}/callback"
+    return f"{base}/api/auth/{platform}/callback"
 
 FACEBOOK_SCOPES = "pages_read_engagement,pages_manage_posts,pages_show_list"
 INSTAGRAM_SCOPES = "instagram_basic,instagram_manage_comments"
